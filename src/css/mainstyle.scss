@@ -1,0 +1,133 @@
+html, body, div, span, applet, object, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+    color:#494949;
+}
+
+.flex-jus-between{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+}
+.flex-jus-center{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.flex-align-center{
+    display:flex;
+    align-items: center;
+}
+.flex{
+    display:flex;
+}
+input.removeCss{
+    border:none;
+    word-wrap:break-word;
+    outline:none;
+    -webkit-tap-highlight-color:transparent;
+}
+textarea.removeTACss{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    resize: none;
+    padding: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+input.searchInput{
+    background-color:white;
+    border-radius:5000px;
+    padding:3px 15px;
+}
+input.formInput{
+    background-color:white;
+    border-radius:10px;
+    padding:3px 15px;
+}
+.no-select{
+    user-select: none; /* CSS3 */
+    -moz-user-select: none; /* Firefox */
+    -webkit-user-select: none; /* Safari、Chrome */
+    -ms-user-select: none; /* IE10 */
+}
+.btn-submit{
+    display:inline-block;
+    width:auto;
+    background:#00aced;
+    color:white;
+    border-radius:5px;
+}
+.btn-submit-sub{
+    display:inline-block;
+    width:auto;
+    background:white;
+    color:#aaa;
+    border-radius:5px;
+    border:1px solid #e8e8e8;
+}
+.scroll-y{
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display:none;
+    }
+}
+.scroll-x{
+    white-space: nowrap;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display:none;
+    }
+}
+
+.formInputWrap{
+    background:#f0f0f0;
+    width:400px;
+    padding:5px 10px;
+    border-radius:10px;
+    div{
+        font-size:0.8em;
+        margin:0;
+    }
+    input{
+        width:100%;
+        margin:0;
+        background:#f0f0f0;
+        font-size:0.8em;
+    }
+}
+.formTextareaWrap{
+    background:#f0f0f0;
+    width:400px;
+    padding:5px 10px;
+    border-radius:10px;
+    div{
+        font-size:0.8em;
+        margin:0;
+    }
+    textarea{
+        width:100%;
+        margin:0;
+        background:#f0f0f0;
+        font-size:0.8em;
+        line-height:1.5em;
+    }
+}
+
+//文字がオーバーした時
+.textOverflow{
+	text-overflow: ellipsis;
+	-webkit-text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+}
