@@ -16,7 +16,7 @@ function Index() {
     <>
       <main>
         <div className="playlist_ad">
-          a
+          広告
         </div>
         <Playlist />
       </main>

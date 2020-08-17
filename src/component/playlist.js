@@ -46,6 +46,8 @@ export default class SlickGoTo extends React.Component {
         this.setState(state => ({ updateCount: state.updateCount + 1 })),
       beforeChange: (current, next) => this.setState({ slideIndex: next })
     };
+    //ボタン表示判定式
+    const bl = this.state.slideIndex > 0 && (!this.state.openIndex || this.state.openIndex === -1 ) && this.state.slideIndex <= 10
     return (
         <>
           <Indexpopup isPopup={this.state.openIndex} action={(val) => this.setState({openIndex:val})} slickGoTo={(val) => this.slider.slickGoTo(val)}/>
@@ -150,22 +152,58 @@ export default class SlickGoTo extends React.Component {
                 </div>
               </section>
             )}
-            <section className="playlistSection no-select scroll-y" onClick={() => this.slider.slickGoTo(0)}>
-              最初に戻る
+            <section className="playlistSection index no-select scroll-y">
+              <div className="playListHeader" onClick={() => this.slider.slickGoTo(0)}>
+                <p className="next">トップに戻る</p>
+              </div>
+              <div className="playListInf flex" style={{marginBottom:"10px"}}>
+                <div className="thumbnail">
+                  <img src="https://i.ytimg.com/vi/G6sKFv4GDkA/hqdefault.jpg" />
+                </div>
+                <div className="playListInfInner">
+                  <div>おすすめプレイリストだよ？</div>
+                  <Link
+                    to={{pathname: '/'}}
+                    className="user"
+                  >Lei*</Link>
+                  <div className="tp_icons flex-align-center">
+                    <FontAwesomeIcon icon={faHeart} style={tp_iconStyle}/>
+                    <FontAwesomeIcon icon={faBookmark} style={tp_iconStyle}/>
+                    <FontAwesomeIcon icon={faTwitter} style={twitterStyle}/>
+                    <a href="#" class="insta_btn3 flex-jus-center">
+                      <FontAwesomeIcon icon={faInstagram} style={instagramStyle}/>
+                    </a>
+                    <FontAwesomeIcon icon={faList}/>
+                  </div>
+                </div>
+              </div>
+              <div className="lastSlideInf">
+                <p className="label">最後までお読みいただきありがとうございました</p>
+                <p className="content">このプレイリストはLei*が作成しました。プレイリストの作成者に「すき！」を送りませんか？いっぱいタップして好きを送りましょう！</p>
+                <div className="btn">すきを送る</div>
+              </div>
+              <div className="lastSlideInf">
+                <p className="label">ユーザー登録をしませんか？</p>
+                <p className="content">musicGiftに登録すると自分のお気に入りの曲をシェアしたり、プレイリストを作成できたりします。登録はわずか10秒で完了します。</p>
+                <div className="btn">ユーザー登録をする</div>
+              </div>
+              <div className="nextPlaylist">
+                <p className="label">次のプレイリスト</p>
+              </div>
             </section>
           </Slider>
           {this.state.slideIndex != -1 &&
             <>
-              <div className={this.state.slideIndex > 0 && (!this.state.openIndex || this.state.openIndex === -1 ) ? "indexFixedBox iFBactive no-select" : "indexFixedBox iFBinactive no-select"} onClick={() => this.setState({openIndex:true})}>
+              <div className={bl ? "indexFixedBox iFBactive no-select" : "indexFixedBox iFBinactive no-select"} onClick={() => this.setState({openIndex:true})}>
                 目次を表示
               </div>
-              <div className={this.state.slideIndex > 0 && (!this.state.openIndex || this.state.openIndex === -1 ) ? "counterFixedBox iFBactive no-select" : "counterFixedBox iFBinactive"}>
+              <div className={bl ? "counterFixedBox iFBactive no-select" : "counterFixedBox iFBinactive"}>
                 {this.state.slideIndex}/10
               </div>
-              <div className={this.state.slideIndex > 0 && (!this.state.openIndex || this.state.openIndex === -1 ) ? "toTopFixedBox iFBactive no-select" : "toTopFixedBox iFBinactive"} onClick={() => this.slider.slickGoTo(0)}>
+              <div className={bl ? "toTopFixedBox iFBactive no-select" : "toTopFixedBox iFBinactive"} onClick={() => this.slider.slickGoTo(0)}>
                 <FontAwesomeIcon icon={faChevronLeft} />
               </div>
-              <Link to={{pathname: '/'}} className={this.state.slideIndex > 0 && (!this.state.openIndex || this.state.openIndex === -1 ) ? "toHomeFixedBox iFBactive no-select" : "toHomeFixedBox iFBinactive"}>
+              <Link to={{pathname: '/'}} className={bl ? "toHomeFixedBox iFBactive no-select" : "toHomeFixedBox iFBinactive"}>
                 <FontAwesomeIcon icon={faHome} />
               </Link>
             </>
