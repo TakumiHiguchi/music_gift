@@ -1,13 +1,15 @@
 
 import React, { Component } from "react";
 import Slider from "react-slick";
-import { Link, withRouter } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; //fontaweresomeのインポート
-import { faChevronRight,faChevronLeft,faList} from "@fortawesome/free-solid-svg-icons";//矢印アイコン
+import { faChevronRight,faChevronLeft,faList,faHome} from "@fortawesome/free-solid-svg-icons";//矢印アイコン
 import { faApple,faYoutube,faTwitter,faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faBookmark,faHeart } from '@fortawesome/free-regular-svg-icons';
 
+import '../css/playlist.scss'
+import Indexpopup from './indexPopup';
 
 const brPadding={
   paddingRight:"3px"
@@ -30,7 +32,7 @@ export default class SlickGoTo extends React.Component {
   state = {
     slideIndex: -1,
     updateCount: 0,
-    descriptionToggle:false
+    openIndex:-1
   };
 
   render() {
@@ -46,6 +48,7 @@ export default class SlickGoTo extends React.Component {
     };
     return (
         <>
+          <Indexpopup isPopup={this.state.openIndex} action={(val) => this.setState({openIndex:val})} slickGoTo={(val) => this.slider.slickGoTo(val)}/>
           <Slider ref={slider => (this.slider = slider)} {...settings}>
             <div className="playlistSection index no-select scroll-y">
               <div className="playListHeader" onClick={() => this.slider.slickGoTo(1)}>
@@ -112,34 +115,38 @@ export default class SlickGoTo extends React.Component {
               </div>
             </div>
             {[...Array(10)].map((_,index) =>
-              <section className="playlistSection no-select scroll-y">
+              <section className="playlistSection no-select">
                 <div className="sliderWrap">
                   <img src='https://colorido.co.jp/wp-content/uploads/2020/03/cb65bded867ed46c1bb6c48627d86f31.jpg' />
                 </div>
-                <div className="title" onClick={() => this.slider.slickGoTo(index+2)}>
-                  <h2>ただ君に晴れ</h2>
+                <div className="contentWrap scroll-y">
+                  <div className="title" onClick={() => this.slider.slickGoTo(index+2)}>
+                    <h2>ただ君に晴れ</h2>
+                    <Link
+                      to={{pathname: '/'}}
+                    >s</Link>
+                  </div>
                   <Link
-                    to={{pathname: '/'}}
-                  >s</Link>
-                </div>
-                <Link
-                    to={{pathname: '/'}}
-                  >
-                  <div className="artist flex-align-center">
-                    <img src="https://hiiragi000.xsrv.jp/images/main/icon5.png" />
-                    <h3>ヨルシカ</h3>
+                      to={{pathname: '/'}}
+                    >
+                    <div className="artist flex-align-center">
+                      <img src="https://hiiragi000.xsrv.jp/images/main/icon5.png" />
+                      <h3>ヨルシカ</h3>
+                    </div>
+                  </Link>
+                  <div className="comment">
+                    <p className="label">コメントと考察</p>
+                    <div className="fcomment flex">
+                      <img src="https://hiiragi000.xsrv.jp/images/s_jac/sGbBowyXYTdCUNKGoxFC.png" />
+                      <p className="textOverflow"><span>マジでおすすめのプレイリスト！やったぜ！マジでおすすめのプレイリスト！やったぜ！</span></p>
+                    </div>
                   </div>
-                </Link>
-                <div className="comment">
-                  <p className="label">コメントと考察</p>
-                  <div className="fcomment flex">
-                    <img src="https://hiiragi000.xsrv.jp/images/s_jac/sGbBowyXYTdCUNKGoxFC.png" />
-                    <p className="textOverflow"><span>マジでおすすめのプレイリスト！やったぜ！マジでおすすめのプレイリスト！やったぜ！</span></p>
+                  <div className="introduction">
+                    <p className="label">紹介</p>
+                    {[...Array(10)].map((_,index) =>
+                      <p>曲をインデックス化して、それ以外発言できないようにすること</p>
+                    )}
                   </div>
-                </div>
-                <div className="introduction">
-                  <p className="label">紹介</p>
-                  <p>曲をインデックス化して、それ以外発言できないようにすること</p>
                 </div>
               </section>
             )}
@@ -149,12 +156,18 @@ export default class SlickGoTo extends React.Component {
           </Slider>
           {this.state.slideIndex != -1 &&
             <>
-              <div className={this.state.slideIndex > 0 ? "indexFixedBox iFBactive" : "indexFixedBox iFBinactive"}>
+              <div className={this.state.slideIndex > 0 && (!this.state.openIndex || this.state.openIndex === -1 ) ? "indexFixedBox iFBactive no-select" : "indexFixedBox iFBinactive no-select"} onClick={() => this.setState({openIndex:true})}>
                 目次を表示
               </div>
-              <div className={this.state.slideIndex > 0 ? "toTopFixedBox iFBactive" : "toTopFixedBox iFBinactive"} onClick={() => this.slider.slickGoTo(0)}>
+              <div className={this.state.slideIndex > 0 && (!this.state.openIndex || this.state.openIndex === -1 ) ? "counterFixedBox iFBactive no-select" : "counterFixedBox iFBinactive"}>
+                {this.state.slideIndex}/10
+              </div>
+              <div className={this.state.slideIndex > 0 && (!this.state.openIndex || this.state.openIndex === -1 ) ? "toTopFixedBox iFBactive no-select" : "toTopFixedBox iFBinactive"} onClick={() => this.slider.slickGoTo(0)}>
                 <FontAwesomeIcon icon={faChevronLeft} />
               </div>
+              <Link to={{pathname: '/'}} className={this.state.slideIndex > 0 && (!this.state.openIndex || this.state.openIndex === -1 ) ? "toHomeFixedBox iFBactive no-select" : "toHomeFixedBox iFBinactive"}>
+                <FontAwesomeIcon icon={faHome} />
+              </Link>
             </>
           }
         </>

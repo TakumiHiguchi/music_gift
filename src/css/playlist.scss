@@ -177,57 +177,61 @@
 .playlistSection{
     width:100vw;
     height:calc(100vh - 7px);
-    .title{
-        border-bottom:1px solid #f0f0f0;
-        padding:7px 10px;
-    }
-    .artist{
-        border-bottom:1px solid #f0f0f0;
-        padding:5px 10px;
-        img{
-            display:block;
-            object-fit: cover;
-            border-radius:50%;
-            height:30px;
-            width:30px;
-            margin-right:10px;
+    .contentWrap{
+        height:calc(100% - calc(100vw * 0.5625));
+        .title{
+            border-bottom:1px solid #f0f0f0;
+            padding:7px 10px;
         }
-        h3{
-            display:inline;
-            line-height:30px;
-        }
-    }
-    .comment{
-        border-bottom:1px solid #f0f0f0;
-        padding:5px 10px;
-        cursor: pointer;
-        .label{
-            font-size:0.8em;
-            color:#aaa;
-        }
-        .fcomment{
-            font-size:0.9em;
+        .artist{
+            border-bottom:1px solid #f0f0f0;
+            padding:5px 10px;
             img{
-                display:inline-block;
+                display:block;
                 object-fit: cover;
                 border-radius:50%;
-                height:25px;
-                width:25px;
-                margin-right:7px;
+                height:30px;
+                width:30px;
+                margin-right:10px;
             }
-            p{
-                line-height:25px;
-                width:calc(100% - 32px);
+            h3{
+                display:inline;
+                line-height:30px;
             }
         }
-    }
-    .introduction{
-        font-size:0.9em;
-        .label{
-            font-size:0.8em;
-            color:#aaa;
+        .comment{
+            border-bottom:1px solid #f0f0f0;
+            padding:5px 10px;
+            cursor: pointer;
+            .label{
+                font-size:0.8em;
+                color:#aaa;
+            }
+            .fcomment{
+                font-size:0.9em;
+                img{
+                    display:inline-block;
+                    object-fit: cover;
+                    border-radius:50%;
+                    height:25px;
+                    width:25px;
+                    margin-right:7px;
+                }
+                p{
+                    line-height:25px;
+                    width:calc(100% - 32px);
+                }
+            }
         }
-        padding:5px 10px;
+        .introduction{
+            font-size:0.9em;
+            margin-bottom:100px;
+            .label{
+                font-size:0.8em;
+                color:#aaa;
+            }
+            padding:5px 10px;
+        }
     }
 }
 .playlist_ad{
@@ -256,12 +260,36 @@
 }
 .toTopFixedBox{
     position:fixed;
-    top:5px;
+    top:0px;
     left:5px;
-    color:white;
+    color:rgba(255,255,255,0.8);
     font-size:1.2em;
     padding:5px;
     cursor:pointer;
+}
+.toHomeFixedBox{
+    position:fixed;
+    display:block;
+    width:22px;
+    top:0px;
+    right:0;
+    left:0;
+    margin:auto;
+    color:rgba(255,255,255,0.8);
+    font-size:1.2em;
+    padding:5px;
+    cursor:pointer;
+}
+.counterFixedBox{
+    position:fixed;
+    bottom:80px;
+    right:10px;
+    font-size:1.2em;
+    padding:5px 15px;
+    font-size:0.8em;
+    background:white;
+    border:1px solid #e8e8e8;
+    border-radius:5000px;
 }
 .iFBactive{
     animation-name:popup;

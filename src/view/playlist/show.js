@@ -4,7 +4,7 @@ import Slider from "react-slick";
 
 
 
-import '../../css/playlist.scss'
+
 import Playlist from '../../component/playlist'
 
 
