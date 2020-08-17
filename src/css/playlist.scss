@@ -23,6 +23,7 @@
         }
     }
     .playListInf{
+        position:relative;
         width:calc(100% - 20px);
         padding:0 10px 15px;
         border-bottom:1px solid #f0f0f0;
@@ -52,6 +53,15 @@
             .user{
                 color:#aaa;
                 text-decoration:none;
+                cursor: pointer;
+            }
+        }
+        .tp_icons{
+            position:absolute;
+            bottom:10px;
+            right:10px;
+            svg{
+                font-size:1.3em;
                 cursor: pointer;
             }
         }
@@ -223,3 +233,35 @@
         max-height:150px;
     }
 }
+
+//インスタ
+.insta_btn3 {/*ボタンの下地*/
+    color: #FFF;/*文字・アイコン色*/
+    border-radius: 5px;/*角丸に*/
+    position: relative;
+    height: 1.2em;/*高さ*/
+    width: 1.2em;/*幅*/
+    box-sizing: border-box;
+    font-size: 19px;/*文字のサイズ*/
+    margin-right:12px;
+    background: -webkit-linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+    background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;/*グラデーション①*/
+    overflow: hidden;/*はみ出た部分を隠す*/
+    text-decoration:none;/*下線は消す*/
+  }
+  
+  .insta_btn3:before{/*グラデーション②*/
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index:1;
+    width: 100%;/*全体を覆う*/
+    height: 100%;/*全体を覆う*/
+    background: -webkit-linear-gradient(15deg, #ffdb2c, rgb(249, 118, 76) 25%, rgba(255, 77, 64, 0) 50%) no-repeat;
+    background: linear-gradient(15deg, #ffdb2c, rgb(249, 118, 76) 25%, rgba(255, 77, 64, 0) 50%) no-repeat;
+  }
+  
+  .insta_btn3 div {
+    position: relative;
+  }

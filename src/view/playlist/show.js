@@ -3,8 +3,9 @@ import { Link, withRouter } from "react-router-dom";
 import Slider from "react-slick";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; //fontaweresomeのインポート
-import { faChevronRight} from "@fortawesome/free-solid-svg-icons";//矢印アイコン
-import { faApple,faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faChevronRight,faList} from "@fortawesome/free-solid-svg-icons";//矢印アイコン
+import { faApple,faYoutube,faTwitter,faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faBookmark,faHeart } from '@fortawesome/free-regular-svg-icons';
 
 import '../../css/playlist.scss'
 
@@ -17,6 +18,18 @@ const settings = {
 }
 const brPadding={
   paddingRight:"3px"
+}
+const tp_iconStyle={
+  marginRight:"12px"
+}
+const twitterStyle={
+  color:"#00aced",
+  marginRight:"12px"
+}
+const instagramStyle={
+  color:"white",
+  fontSize:"0.9em",
+  zIndex:999
 }
 const key = "dwnedfoiwefiqwe"
 
@@ -39,12 +52,20 @@ function Index() {
                 <img src="https://i.ytimg.com/vi/G6sKFv4GDkA/hqdefault.jpg" />
               </div>
               <div className="playListInfInner">
-                <h1>りこの！おすすめプレイリストだよ？</h1>
+                <h1>おすすめプレイリストだよ？</h1>
                 <Link
                   to={{pathname: '/'}}
                   className="user"
                 >Lei*</Link>
-                <a>ブックマークに追加</a>
+                <div className="tp_icons flex-align-center">
+                  <FontAwesomeIcon icon={faHeart} style={tp_iconStyle}/>
+                  <FontAwesomeIcon icon={faBookmark} style={tp_iconStyle}/>
+                  <FontAwesomeIcon icon={faTwitter} style={twitterStyle}/>
+                  <a href="#" class="insta_btn3 flex-jus-center">
+                    <FontAwesomeIcon icon={faInstagram} style={instagramStyle}/>
+                  </a>
+                  <FontAwesomeIcon icon={faList}/>
+                </div>
               </div>
             </div>
             <div className={descriptionToggle ? "description desOpen scroll-y" : "description desClose scroll-y"} onClick={() => setDescriptionToggle(!descriptionToggle)}>
