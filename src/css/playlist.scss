@@ -1,3 +1,4 @@
+
 .index{
     width:100%;
     .playListHeader{
@@ -225,12 +226,12 @@
         }
         .introduction{
             font-size:0.9em;
-            margin-bottom:100px;
             .label{
                 font-size:0.8em;
                 color:#aaa;
             }
             padding:5px 10px;
+            margin-bottom:100px;
         }
     }
 }
@@ -266,7 +267,6 @@
 .nextPlaylist{
     padding:5px 10px;
     cursor: pointer;
-    margin-bottom:100px;
     .label{
         font-size:0.8em;
         color:#aaa;

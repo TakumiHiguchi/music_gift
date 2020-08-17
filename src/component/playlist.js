@@ -11,6 +11,9 @@ import { faBookmark,faHeart } from '@fortawesome/free-regular-svg-icons';
 import '../css/playlist.scss'
 import Indexpopup from './indexPopup';
 
+import viewportUnit from 'viewport-units-buggyfill';
+viewportUnit.init({force: true});
+
 const brPadding={
   paddingRight:"3px"
 }
@@ -145,7 +148,7 @@ export default class SlickGoTo extends React.Component {
                   </div>
                   <div className="introduction">
                     <p className="label">紹介</p>
-                    {[...Array(10)].map((_,index) =>
+                    {[...Array(100)].map((_,index) =>
                       <p>曲をインデックス化して、それ以外発言できないようにすること</p>
                     )}
                   </div>
