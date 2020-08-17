@@ -70,7 +70,7 @@ export default class SlickGoTo extends React.Component {
                     <FontAwesomeIcon icon={faHeart} style={tp_iconStyle}/>
                     <FontAwesomeIcon icon={faBookmark} style={tp_iconStyle}/>
                     <FontAwesomeIcon icon={faTwitter} style={twitterStyle}/>
-                    <a href="#" class="insta_btn3 flex-jus-center">
+                    <a href="#" className="insta_btn3 flex-jus-center">
                       <FontAwesomeIcon icon={faInstagram} style={instagramStyle}/>
                     </a>
                     <FontAwesomeIcon icon={faList}/>
@@ -170,7 +170,7 @@ export default class SlickGoTo extends React.Component {
                     <FontAwesomeIcon icon={faHeart} style={tp_iconStyle}/>
                     <FontAwesomeIcon icon={faBookmark} style={tp_iconStyle}/>
                     <FontAwesomeIcon icon={faTwitter} style={twitterStyle}/>
-                    <a href="#" class="insta_btn3 flex-jus-center">
+                    <a href="#" className="insta_btn3 flex-jus-center">
                       <FontAwesomeIcon icon={faInstagram} style={instagramStyle}/>
                     </a>
                     <FontAwesomeIcon icon={faList}/>
