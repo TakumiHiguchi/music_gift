@@ -127,6 +127,8 @@ input.formInput{
 
 //文字がオーバーした時
 .textOverflow{
+    overflow: hidden;
+    white-space: nowrap;
 	text-overflow: ellipsis;
 	-webkit-text-overflow: ellipsis;
 	-o-text-overflow: ellipsis;
