@@ -240,8 +240,55 @@
     height:60px;
     box-shadow:rgba(0, 0, 0, 0.3) 0 -2px 8px;
 }
-
-
+.indexFixedBox{
+    position:fixed;
+    width:65px;
+    padding:5px 15px;
+    border-radius:5px;
+    bottom:80px;
+    left:0;
+    right:0;
+    margin:auto;
+    font-size:0.8em;
+    background:white;
+    border:1px solid #e8e8e8;
+    cursor:pointer;
+}
+.toTopFixedBox{
+    position:fixed;
+    top:5px;
+    left:5px;
+    color:white;
+    font-size:1.2em;
+    padding:5px;
+    cursor:pointer;
+}
+.iFBactive{
+    animation-name:popup;
+    animation-duration:1s;
+    animation-fill-mode: forwards;
+}
+.iFBinactive{
+    animation-name:inpopup;
+    animation-duration:1s;
+    animation-fill-mode: forwards;
+}
+@keyframes popup{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes inpopup{
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
 @keyframes leftToright01 {
     0% {
         opacity: 0;

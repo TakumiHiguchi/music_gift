@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import { Link, withRouter } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; //fontaweresomeのインポート
-import { faChevronRight,faList, faPlay} from "@fortawesome/free-solid-svg-icons";//矢印アイコン
+import { faChevronRight,faChevronLeft,faList} from "@fortawesome/free-solid-svg-icons";//矢印アイコン
 import { faApple,faYoutube,faTwitter,faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faBookmark,faHeart } from '@fortawesome/free-regular-svg-icons';
 
@@ -28,7 +28,7 @@ const key = "dwnedfoiwefiqwe"
 
 export default class SlickGoTo extends React.Component {
   state = {
-    slideIndex: 0,
+    slideIndex: -1,
     updateCount: 0,
     descriptionToggle:false
   };
@@ -147,7 +147,16 @@ export default class SlickGoTo extends React.Component {
               最初に戻る
             </section>
           </Slider>
-          
+          {this.state.slideIndex != -1 &&
+            <>
+              <div className={this.state.slideIndex > 0 ? "indexFixedBox iFBactive" : "indexFixedBox iFBinactive"}>
+                目次を表示
+              </div>
+              <div className={this.state.slideIndex > 0 ? "toTopFixedBox iFBactive" : "toTopFixedBox iFBinactive"} onClick={() => this.slider.slickGoTo(0)}>
+                <FontAwesomeIcon icon={faChevronLeft} />
+              </div>
+            </>
+          }
         </>
     );
   }
