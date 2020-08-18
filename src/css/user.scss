@@ -48,3 +48,126 @@
         }
     }
 }
+
+//new
+.userNewContainer{
+    width:100vw;
+    height:100vh;
+    .un_inputContainer{
+        width:100vw;
+        height:calc(100% - calc(300px + 5vh));
+        justify-content:center;
+        padding-top:5vh;
+        .un_Input{
+            background-color:transparent;
+            border:none;
+            padding:5px 20px;
+            width:70vw;
+            word-wrap:break-word;
+            outline:none;
+            -webkit-tap-highlight-color:transparent;
+            height:1.5em;
+            font-size:1em;
+            border:1px solid #0af;
+            border-radius:5000px;
+        }
+        .label{
+            font-weight:bold;
+            margin-bottom:5px;
+            margin-left:10px;
+        }
+        p{
+            padding:10px 0 10px 10px;
+            font-size:0.6em;
+            color:#aaa;
+        }
+    }
+}
+
+//流線型
+.popup_effect_newUser{
+    animation-name:topTobottom02;
+    animation-duration:2s;
+    transform: scale(1);
+}
+@keyframes topTobottom02 {
+    0% {
+        opacity: 0;
+        transform: translateY(-300px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.box {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .wave {
+    opacity: .4;
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    background: #0af;
+    width: 500px;
+    height: 500px;
+    margin-left: -250px;
+    margin-top: -250px;
+    transform-origin: 50% 48%;
+    border-radius: 43%;
+    animation: drift 3000ms infinite linear;
+  }
+  
+  .wave.-three {
+    animation: drift 5000ms infinite linear;
+  }
+  
+  .wave.-two {
+    animation: drift 7000ms infinite linear;
+    opacity: .1;
+    background: yellow;
+  }
+  
+  .box:after {
+    content: '';
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(#e8a, 1), rgba(#def, 0) 80%, rgba(white, .5));
+    z-index: 11;
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .user_newtitle {
+    position: absolute;
+    left: 0;
+    top: 100px;
+    width: 100%;
+    z-index: 1;
+    text-align: center;
+    transform: translate3d(0, 0, 0);
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: .4em;
+    font-size: 24px;
+    text-shadow: 0 1px 0 rgba(black, .1);
+    text-indent: .3em;
+    span{
+        font-size:0.7em;
+        letter-spacing: .2em;
+        color:white;
+    }
+  }
+  @keyframes drift {
+    from { transform: rotate(0deg); }
+    from { transform: rotate(360deg); }
+  }

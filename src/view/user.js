@@ -7,8 +7,6 @@ import { faBookmark,faHeart } from '@fortawesome/free-regular-svg-icons';
 
 import isSignin from '../auth/isSignin';
 
-import SignUp from "../auth/SignUp";
-
 import * as firebase from "firebase/app";
 import "firebase/auth";
 
@@ -19,7 +17,8 @@ import {
 } from "react-router-dom";
 
 import '../css/user.scss'
-import { findProperties } from 'viewport-units-buggyfill';
+import viewportUnit from 'viewport-units-buggyfill';
+viewportUnit.init({force: true});
 
 
 

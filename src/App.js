@@ -28,6 +28,7 @@ export default function App() {
   return (
     <Router>
       <Switch>
+        <Route exact path="/user/new" component={User_new} />
         <Route exact path="/playlist/:id" component={Pl_show} />
         <Route exact path="/signup" component={SignUp} />
         <Route path="*">
@@ -49,7 +50,6 @@ function MusicGift(){
           <Route exact path="/article" component={Article} />
           <Route exact path="/search" component={Search} />
           <Route exact path="/user" component={User} />
-          <Route exact path="/user/new" component={User_new} />
           <Route exact path="/bookmark" component={Bookmark} />
           <Route render={() => <h1>ページが見つかりません</h1>} />
         </Switch>
