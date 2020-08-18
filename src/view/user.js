@@ -5,6 +5,8 @@ import FixedMenu from '../component/FixedMenu';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; //fontaweresomeのインポート
 import { faBookmark,faHeart } from '@fortawesome/free-regular-svg-icons';
 
+import isSignin from '../auth/isSignin';
+
 import SignUp from "../auth/SignUp";
 
 import * as firebase from "firebase/app";
@@ -12,7 +14,8 @@ import "firebase/auth";
 
 import { 
   Link, 
-  withRouter
+  withRouter,
+  Redirect
 } from "react-router-dom";
 
 import '../css/user.scss'
@@ -30,9 +33,13 @@ function User() {
   );
 }
 function CheckLogin(){
-  var user = firebase.auth().currentUser;
-  if(user){
-    return(<LoginUser user={user}/>);
+  const user = isSignin()
+  if(user.isSignin){
+    if(user.userDetail){
+      return(<LoginUser user={user}/>);
+    }else{
+      return(<Redirect to='/user/new' />);
+    }
   }else{
     return(<NullUser />);
   }
@@ -57,7 +64,7 @@ function LoginUser(props){
               </div>
               <div className="details">
                 <div className="name">
-                  {props.user.displayName}
+                  {props.user.user.displayName}
                 </div>
                 <div className="description">
                 </div>

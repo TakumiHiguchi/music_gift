@@ -19,6 +19,7 @@ import Home from "./view/home";
 import Article from "./view/article";
 import Search from "./view/search";
 import User from "./view/user";
+import User_new from "./view/user/new";
 import Bookmark from "./view/bookmark";
 import Pl_show from "./view/playlist/show";
 import SignUp from "./auth/SignUp";
@@ -48,6 +49,7 @@ function MusicGift(){
           <Route exact path="/article" component={Article} />
           <Route exact path="/search" component={Search} />
           <Route exact path="/user" component={User} />
+          <Route exact path="/user/new" component={User_new} />
           <Route exact path="/bookmark" component={Bookmark} />
           <Route render={() => <h1>ページが見つかりません</h1>} />
         </Switch>
