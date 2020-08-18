@@ -230,7 +230,7 @@ export default class SlickGoTo extends React.Component {
               <div className="lastSlideInf">
                 <p className="label">ユーザー登録をしませんか？</p>
                 <p className="content">musicGiftに登録すると自分のお気に入りの曲をシェアしたり、プレイリストを作成できたりします。登録はわずか10秒で完了します。</p>
-                <div className="btn">ユーザー登録をする</div>
+                <a href="/signup" className="btn">ユーザー登録をする</a>
               </div>
               <div className="nextPlaylist">
                 <p className="label">次のプレイリスト</p>

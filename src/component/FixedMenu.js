@@ -20,7 +20,7 @@ function FixedMenu (){
           <FontAwesomeIcon icon={faSearch} style={location.pathname == "/search" ? {color:"#00aced"} : null}/>
         </Link>
         <Link to={{pathname: '/user'}} className="flex-jus-center">
-          <FontAwesomeIcon icon={faUser} style={location.pathname == "/user" ? {color:"#00aced"} : null}/>
+          <FontAwesomeIcon icon={faUser} style={location.pathname == "/user" || location.pathname == "/signup" ? {color:"#00aced"} : null}/>
         </Link>
         <Link to={{pathname: '/bookmark'}} className="flex-jus-center">
           <FontAwesomeIcon icon={faBookmark} style={location.pathname == "/bookmark" ? {color:"#00aced"} : null}/>
