@@ -1,21 +1,52 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import {
+  TransitionGroup,
+  CSSTransition
+} from "react-transition-group";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  useLocation,
+  useParams
+} from "react-router-dom";
 import './App.css';
 
 //view
 import Home from "./view/home";
+import Search from "./view/search";
 import Pl_show from "./view/playlist/show";
 
-function App() {
+export default function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Switch>
-        <Route exact path="/" component={Home} />
         <Route exact path="/playlist/:id" component={Pl_show} />
-        <Route render={() => <h1>ページが見つかりません</h1>} />
+        <Route path="*">
+          <MusicGift />
+        </Route>
       </Switch>
-    </BrowserRouter>
+    </Router>
+    
   );
 }
 
-export default App;
+function MusicGift(){
+  let location = useLocation();
+  return(
+    <TransitionGroup>
+      <CSSTransition key={location.key} classNames="fade" timeout={1000}>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/search" component={Search} />
+          <Route exact path="/user" component={Home} />
+          <Route exact path="/like" component={Home} />
+          <Route exact path="/bookmark" component={Home} />
+          <Route render={() => <h1>ページが見つかりません</h1>} />
+        </Switch>
+      </CSSTransition>
+    </TransitionGroup>
+  )
+}

@@ -1,3 +1,4 @@
+
 .sliderWrap{
     display:block;
     width:100vw;
@@ -52,19 +53,30 @@
         }
     }
 }
-.slick-dots{
-    display:flex;
-    justify-content:space-between;
-    align-items: center;
-    width:auto;
-    height:auto;
-    position:absolute;
-    bottom:15px;
-    margin:0 5px;
-    border-radius:10px;
-    background:white;
-    box-align: center; 
-    li{
-        box-align: center; 
+//下部固定表示
+.fixedmenu{
+    a{
+        height:100%;
+        width:calc(100vw / 5);
+        text-align:center;
+        svg{
+            font-size:1.2em;
+        }
     }
+}
+.fade-enter {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+.fade-enter-active {
+    
+    transform: translateX(0px);
+    transition: all 500ms cubic-bezier(0.170, 0.935, 0.305, 1.000);
+    opacity: 1;
+}
+.fade-exit {
+    display:none;
+}
+.fade-exit-active {
+    display:none;
 }

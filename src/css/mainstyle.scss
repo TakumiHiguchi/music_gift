@@ -14,6 +14,11 @@ html, body, div, span, applet, object, h1, h2, h3, h4, h5, h6, p, blockquote, pr
     justify-content:space-between;
     align-items: center;
 }
+.flex-jus-around{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
 .flex-jus-center{
     display:flex;
     justify-content:center;

@@ -18,7 +18,8 @@ const headerStyle ={
     width:'calc(100% - 20px)',
     height:"40px",
     padding:'0 10px',
-    background:'white'
+    background:'white',
+    borderBottom:"1px solid #f0f0f0"
   },
   h1:{
     display:"inline",
