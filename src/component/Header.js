@@ -18,14 +18,13 @@ const headerStyle ={
     width:'calc(100% - 20px)',
     height:"40px",
     padding:'0 10px',
-    background:'#00aced'
+    background:'white'
   },
   h1:{
     display:"inline",
-    color:'white',
     lineHeight:'40px',
     fontWeight:'bold',
-    fontSize:'1.2em'
+    fontSize:'1.1em'
   }
 
 }

@@ -1,7 +1,11 @@
 
 import React, { Component } from "react";
 import Slider from "react-slick";
-import { Link} from "react-router-dom";
+import {Link} from "react-router-dom";
+
+//firebase
+import firebase from 'firebase/app'; //必須
+import 'firebase/firestore';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; //fontaweresomeのインポート
 import { faChevronRight,faChevronLeft,faList,faHome} from "@fortawesome/free-solid-svg-icons";//矢印アイコン
@@ -30,13 +34,51 @@ const instagramStyle={
   zIndex:999
 }
 const key = "dwnedfoiwefiqwe"
+let nTimer;//タイマー
+
+//firebaseインスタンスの初期化
+firebase.initializeApp({
+  apiKey: 'AIzaSyBC_v_l0991FvOF33DyuDG0HQemskJgcpk',
+  authDomain: 'musicgift-54fd9.firebaseapp.com',
+  projectId: 'musicgift-54fd9'
+});
+const db = firebase.firestore();
+
 
 export default class SlickGoTo extends React.Component {
   state = {
     slideIndex: -1,
     updateCount: 0,
-    openIndex:-1
+    openIndex:-1,
+    data:{}
   };
+
+  api(){
+    db.collection("playlists").doc().set({
+      "title": "テストデータ",
+      "description": "てすとでーたです.",
+    });
+    db.collection("playlists").limit(1).get().then((response) => {
+      response.forEach((doc) => {
+        this.setState({data:doc.data()})
+      })
+    })
+  }
+
+  timer(){
+    //スマホがスクロールできなくなるため時間でDOMを消す
+    if(nTimer){clearTimeout(nTimer);}
+    nTimer = setTimeout(() => {
+      this.setState({openIndex:-1});
+    }, 500)
+  }
+  handleOutside(val){
+    this.setState({openIndex:val});
+    this.timer();
+  }
+  slickGoTo(val){
+    this.slider.slickGoTo(val);
+  }
 
   render() {
     const settings = {
@@ -53,7 +95,7 @@ export default class SlickGoTo extends React.Component {
     const bl = this.state.slideIndex > 0 && (!this.state.openIndex || this.state.openIndex === -1 ) && this.state.slideIndex <= 10
     return (
         <>
-          <Indexpopup isPopup={this.state.openIndex} action={(val) => this.setState({openIndex:val})} slickGoTo={(val) => this.slider.slickGoTo(val)}/>
+          <Indexpopup isPopup={this.state.openIndex} action={(val) => this.handleOutside(val)} slickGoTo={(val) => this.slickGoTo(val)}/>
           <Slider ref={slider => (this.slider = slider)} {...settings}>
             <div className="playlistSection index no-select scroll-y">
               <div className="playListHeader" onClick={() => this.slider.slickGoTo(1)}>
@@ -63,8 +105,8 @@ export default class SlickGoTo extends React.Component {
                 <div className="thumbnail">
                   <img src="https://i.ytimg.com/vi/G6sKFv4GDkA/hqdefault.jpg" />
                 </div>
-                <div className="playListInfInner">
-                  <h1>おすすめプレイリストだよ？</h1>
+                <div className="playListInfInner" onClick={() => this.api()}>
+                  <h1>{this.state.data.title}</h1>
                   <Link
                     to={{pathname: '/'}}
                     className="user"
@@ -80,7 +122,7 @@ export default class SlickGoTo extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className={this.state.descriptionToggle ? "description desOpen scroll-y" : "description desClose scroll-y"} onClick={() => this.setState({descriptionToggle:!this.state.descriptionToggle})}>
+              <div className={this.state.descriptionToggle && this.state.slideIndex <= 0 ? "description desOpen scroll-y" : "description desClose scroll-y"} onClick={() => this.setState({descriptionToggle:!this.state.descriptionToggle})}>
                 <div className="flex-jus-between"><p className="label">概要</p>{this.state.descriptionToggle ? <a>閉じる</a> : <a>もっと見る</a>}</div>
                 <p>独特な世界観と透明感が売りのヨルシカ。そんなヨルシカのおすすめ人気曲をご紹介します！</p>
                 <p>ヨルシカをあまり聴いたことがない人向けに前提知識を。<br />ヨルシカの曲には物語があります。なので、物語を知りたい方や、考察したい方はアルバムごとに聴いていくのをお勧めします。<br />もちろん、曲単体で楽しむこともできますので、好きな曲だけを聴くというのでもOKです。</p>

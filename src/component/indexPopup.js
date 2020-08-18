@@ -21,7 +21,7 @@ class indexPopup extends Component{
     return (
       <>
         {this.props.isPopup !== -1 &&
-          <div className={this.props.isPopup ? 'popup popup_effect' : 'popup popup_effect_de'} style={{zIndex:"999999"}}>
+          <div className={this.props.isPopup ? 'popup popup_effect' : 'popup popup_effect_de'}>
             
             <div className="whir scroll-y">
               {[...Array(10)].map((_,index) =>
