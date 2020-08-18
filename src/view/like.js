@@ -8,13 +8,13 @@ import {
 
 
 
-function Search() {
+function Like() {
   return (
     <>
       <div>
         <Header />
         <main>
-          search
+          like
           
         </main>
       </div>
@@ -23,4 +23,4 @@ function Search() {
   );
 }
 //css
-export default withRouter(Search);
+export default withRouter(Like);

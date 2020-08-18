@@ -17,6 +17,9 @@ import './App.css';
 //view
 import Home from "./view/home";
 import Search from "./view/search";
+import User from "./view/user";
+import Like from "./view/like";
+import Bookmark from "./view/bookmark";
 import Pl_show from "./view/playlist/show";
 
 export default function App() {
@@ -41,9 +44,9 @@ function MusicGift(){
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/search" component={Search} />
-          <Route exact path="/user" component={Home} />
-          <Route exact path="/like" component={Home} />
-          <Route exact path="/bookmark" component={Home} />
+          <Route exact path="/user" component={User} />
+          <Route exact path="/like" component={Like} />
+          <Route exact path="/bookmark" component={Bookmark} />
           <Route render={() => <h1>ページが見つかりません</h1>} />
         </Switch>
       </CSSTransition>

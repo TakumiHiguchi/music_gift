@@ -8,13 +8,13 @@ import {
 
 
 
-function Search() {
+function User() {
   return (
     <>
       <div>
         <Header />
         <main>
-          search
+          user
           
         </main>
       </div>
@@ -23,4 +23,4 @@ function Search() {
   );
 }
 //css
-export default withRouter(Search);
+export default withRouter(User);
