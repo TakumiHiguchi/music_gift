@@ -8,13 +8,13 @@ import {
 
 
 
-function Like() {
+function Article() {
   return (
     <>
       <div>
         <Header />
         <main>
-          like
+          
           
         </main>
       </div>
@@ -23,4 +23,4 @@ function Like() {
   );
 }
 //css
-export default withRouter(Like);
+export default withRouter(Article);

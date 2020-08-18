@@ -83,3 +83,21 @@
     display:none;
 }
 
+//ヘッダー
+.Inputline{
+    border:1px solid #f0f0f0;
+    border-radius:5px;
+    padding:0 7px;
+    background:white;
+    .searchInput{
+        background-color:transparent;
+        border:none;
+        padding:0 0 0 7px;
+        width:150px;
+        word-wrap:break-word;
+        outline:none;
+        -webkit-tap-highlight-color:transparent;
+        height:27px;
+        font-size:0.8em;
+    }
+}

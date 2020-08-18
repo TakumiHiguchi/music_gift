@@ -16,9 +16,9 @@ import './App.css';
 
 //view
 import Home from "./view/home";
+import Article from "./view/article";
 import Search from "./view/search";
 import User from "./view/user";
-import Like from "./view/like";
 import Bookmark from "./view/bookmark";
 import Pl_show from "./view/playlist/show";
 
@@ -40,12 +40,12 @@ function MusicGift(){
   let location = useLocation();
   return(
     <TransitionGroup>
-      <CSSTransition key={location.key} classNames="fade" timeout={1000}>
+      <CSSTransition key={location.key} classNames="fade" timeout={500}>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/article" component={Article} />
           <Route exact path="/search" component={Search} />
           <Route exact path="/user" component={User} />
-          <Route exact path="/like" component={Like} />
           <Route exact path="/bookmark" component={Bookmark} />
           <Route render={() => <h1>ページが見つかりません</h1>} />
         </Switch>

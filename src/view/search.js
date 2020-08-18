@@ -5,16 +5,17 @@ import {
   Link, 
   withRouter
 } from "react-router-dom";
+import SearchComponent from '../component/search';
 
-
+import '../css/search.scss'
 
 function Search() {
   return (
     <>
       <div>
-        <Header />
+        <Header search={true}/>
         <main>
-          search
+          <SearchComponent />
           
         </main>
       </div>

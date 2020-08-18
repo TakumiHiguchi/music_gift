@@ -167,7 +167,7 @@ export default class SlickGoTo extends React.Component {
                   <img src='https://colorido.co.jp/wp-content/uploads/2020/03/cb65bded867ed46c1bb6c48627d86f31.jpg' />
                 </div>
                 <div className="contentWrap scroll-y">
-                  <div className="title" onClick={() => this.slider.slickGoTo(index+2)}>
+                  <div className="title" >
                     <h2>ただ君に晴れ</h2>
                     <Link
                       to={{pathname: '/'}}

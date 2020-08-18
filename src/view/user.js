@@ -48,7 +48,7 @@ function User() {
             <div className="lastSlideInf">
               <p className="label">アカウントをお持ちですか？</p>
               <p className="content">アカウントをお持ちですか？musicGiftに登録済みの方は、下のリンクからログインをしてください。</p>
-              <div className="btn">ユーザー登録をする</div>
+              <div className="btn">ログインする</div>
             </div>
 
           </div>
