@@ -51,37 +51,84 @@
 
 //new
 .userNewContainer{
+    position:relative;
     width:100vw;
     height:100vh;
+    .backNav{
+        position:absolute;
+        top:20px;
+        left:20px;
+        z-index:9000;
+        transform: translate3d(0, 0, 0);
+        color: white;
+        text-transform: uppercase;
+        font-family: 'Playfair Display', serif;
+        cursor:pointer;
+    }
     .un_inputContainer{
         width:100vw;
-        height:calc(100% - calc(300px + 5vh));
-        justify-content:center;
+        height:calc(100vh - calc(300px + 5vh)); 
         padding-top:5vh;
-        .un_Input{
-            background-color:transparent;
-            border:none;
-            padding:5px 20px;
-            width:70vw;
-            word-wrap:break-word;
-            outline:none;
-            -webkit-tap-highlight-color:transparent;
-            height:1.5em;
-            font-size:1em;
-            border:1px solid #0af;
-            border-radius:5000px;
-        }
-        .label{
-            font-weight:bold;
-            margin-bottom:5px;
-            margin-left:10px;
-        }
-        p{
-            padding:10px 0 10px 10px;
-            font-size:0.6em;
-            color:#aaa;
+        .un_inputContainer_wrap{
+            height:calc(100% - 150px);
+            padding:0 calc(15vw - 22px);
+            .un_Input{
+                background-color:transparent;
+                border:none;
+                padding:5px 20px;
+                width:70vw;
+                word-wrap:break-word;
+                outline:none;
+                -webkit-tap-highlight-color:transparent;
+                height:1.5em;
+                font-size:1em;
+                border:1px solid #0af;
+                border-radius:5000px;
+            }
+            .label{
+                font-weight:bold;
+                margin-bottom:5px;
+                margin-left:10px;
+            }
+            p{
+                padding:10px 0 0px 10px;
+                font-size:0.6em;
+                color:#aaa;
+            }
+            .last_label{
+                font-weight:bold;
+                margin-bottom:5px;
+            }
+            .resultContent{
+                margin-bottom:10px;
+                color:#aaa;
+            }
         }
     }
+    .un_nextContainer{
+        height:150px;
+        width:100vw;
+        text-align:right;
+        .label1{
+            color:#aaa;
+            font-size:0.6em;
+            text-align:right;
+            margin:0 20px 10px 0;
+        }
+        .nextBtn{
+            display:inline-block;
+            width:100px;
+            padding:5px 20px;
+            border:1px solid #0af;
+            color:#0af;
+            border-radius:5000px;
+            font-size:0.9em;
+            text-align:center;
+            cursor:pointer;
+            margin-right:25px;
+        }
+    }
+    
 }
 
 //流線型
@@ -171,3 +218,84 @@
     from { transform: rotate(0deg); }
     from { transform: rotate(360deg); }
   }
+
+
+  //submitページ
+.popup_effect_newUser_submit{
+    animation-name:bottomTotop01;
+    animation-duration:0.5s;
+    transform: scale(1);
+}
+.un_submitPage{
+    position:fixed;
+    height:calc(100vh - 200px);
+    padding:100px 0;
+    width:100%;
+    background: linear-gradient(135deg, #00aced, #00dbde);
+    z-index:9999;
+    .un_success_title{
+        color:white;
+        font-size:1.2em;
+        width:100%;
+        text-align:center;
+        text-shadow: 0 2px 0 rgba(black, .1);
+        margin-bottom:40px;
+    }
+    .un_success_nextBox{
+        width:calc(80% - 40px);
+        padding:20px 20px;
+        margin:0 10%;
+        background:rgba(255,255,255,0.1);
+        box-shadow: rgba(0, 0, 0, 0.3) 1px 2px 4px;
+        border-radius:10px;
+        text-align:center;
+        margin-bottom:20px;
+        .label{
+            text-shadow: 0 2px 0 rgba(black, .1);
+            margin-bottom:10px;
+        }
+        .content{
+            font-size:0.8em;
+            margin-bottom:10px;
+        }
+        .link{
+            display:inline-block;
+            font-size:0.8em;
+            text-decoration:none;
+            border:1px solid white;
+            padding:7px 20px;
+            border-radius:10px;
+            color:white;
+            text-shadow: 0 2px 0 rgba(black, .1);
+        }
+    }
+}
+
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:51% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:51% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:51% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:51% 0%}
+}
+@keyframes AnimationName { 
+    0%{background-position:51% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:51% 0%}
+}
+
+@keyframes bottomTotop01 {
+    0% {
+        opacity: 0;
+        transform: translateY(100vh);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+

@@ -1,45 +1,33 @@
-import React from 'react';
+import React,{useState, Component} from 'react';
 import { Link, withRouter,Redirect } from "react-router-dom";
-import Header from '../../component/Header';
-import FixedMenu from '../../component/FixedMenu';
+import NewUserSlider from '../../component/user/new';
 
 
 import isSignin from '../../auth/isSignin';
 import viewportUnit from 'viewport-units-buggyfill';
 viewportUnit.init({force: true});
 
-function User() {
-  const user = isSignin()
-  if(!user.isSignin){
+
+
+
+function User(props) {
+  const user = isSignin();
+
+  if(!props.location.state.isSignin){
     return(<Redirect to='/' />);
   }else{
-    if(user.userDetail){
+    if(props.location.state.data.res){
       return(<Redirect to='/' />);
     }else{
       return(
         <>
-          <div>
-            <main className="userNewContainer">
-            <div class='box popup_effect_newUser'>
-              <div class='wave -one'></div>
-              <div class='wave -two'></div>
-              <div class='wave -three'></div>
-              <div class='user_newtitle'>はじめまして<br /><span>あなたのお名前を教えてください</span></div>
-            </div>
-            <div className="un_inputContainer flex">
-              <div>
-                <div className="label">ニックネーム</div>
-                <input type="text" className="un_Input" placeholder="ニックネームを入力" />
-                <p>このニックネームは全ユーザーに公開されます。</p>
-              </div>
-            </div>
-            </main>
-          </div>
+          <NewUserSlider user={user}/>
         </>
       )
     }
   }
 }
+
 
 
 export default withRouter(User);

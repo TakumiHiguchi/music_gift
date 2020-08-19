@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import Header from '../component/Header';
 import FixedMenu from '../component/FixedMenu';
 
@@ -20,27 +20,51 @@ import '../css/user.scss'
 import viewportUnit from 'viewport-units-buggyfill';
 viewportUnit.init({force: true});
 
-
-
-function User() {
-  
-  return (
-    <>
-      <CheckLogin />
-      <FixedMenu />
-    </>
-  );
-}
-function CheckLogin(){
-  const user = isSignin()
-  if(user.isSignin){
-    if(user.userDetail){
-      return(<LoginUser user={user}/>);
-    }else{
-      return(<Redirect to='/user/new' />);
+class User extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      isSignin:false,
+      user:[],
+      data:{res:true}
+    };
+  }
+  componentDidMount(){
+    const user = isSignin()
+    if(user.isSignin){
+      this.setState({isSignin:true});
+      this.setState({user:user.user});
+      console.log(user)
+      console.log(this.state.isSignin)
+      //ユーザー情報があるか確認
+      user.userDetail.then(res => {
+        this.setState({data:res});
+      })
+      .catch(() => {
+      });
     }
-  }else{
-    return(<NullUser />);
+  }
+
+  render(){
+    if(this.state.isSignin){
+      if(this.state.data.res){
+        return(
+          <>
+            <LoginUser user={this.state.user}/>
+            <FixedMenu />
+          </>
+        );
+      }else{
+        return(<Redirect to='/user/new' state={{isSignin:this.state.isSignin,data:this.state.data}}/>);
+      }
+    }else{
+      return(
+        <>
+          <NullUser/>
+          <FixedMenu />
+        </>
+      );
+    }
   }
 }
 
@@ -63,7 +87,7 @@ function LoginUser(props){
               </div>
               <div className="details">
                 <div className="name">
-                  {props.user.user.displayName}
+                  {props.user.displayName}
                 </div>
                 <div className="description">
                 </div>
