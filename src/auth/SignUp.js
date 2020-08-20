@@ -20,7 +20,7 @@ function SignUp(){
       }
     },
     signInFlow: 'popup',
-    signInSuccessUrl: '/',
+    signInSuccessUrl: '/user/new',
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       {provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,

@@ -5,10 +5,8 @@ import FixedMenu from '../component/FixedMenu';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; //fontaweresomeのインポート
 import { faBookmark,faHeart } from '@fortawesome/free-regular-svg-icons';
 
-import isSignin from '../auth/isSignin';
-
-import * as firebase from "firebase/app";
-import "firebase/auth";
+import { isSignIn } from '../redux/action.js'
+import store from "../redux/store.js"
 
 import { 
   Link, 
@@ -20,55 +18,32 @@ import '../css/user.scss'
 import viewportUnit from 'viewport-units-buggyfill';
 viewportUnit.init({force: true});
 
-class User extends Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      isSignin:false,
-      user:[],
-      data:{res:true}
-    };
-  }
-  componentDidMount(){
-    const user = isSignin()
-    if(user.isSignin){
-      this.setState({isSignin:true});
-      this.setState({user:user.user});
-      console.log(user)
-      console.log(this.state.isSignin)
-      //ユーザー情報があるか確認
-      user.userDetail.then(res => {
-        this.setState({data:res});
-      })
-      .catch(() => {
-      });
-    }
-  }
-
-  render(){
-    if(this.state.isSignin){
-      if(this.state.data.res){
-        return(
-          <>
-            <LoginUser user={this.state.user}/>
-            <FixedMenu />
-          </>
-        );
-      }else{
-        return(<Redirect to='/user/new' state={{isSignin:this.state.isSignin,data:this.state.data}}/>);
-      }
-    }else{
+function User (props){
+  const state = store.getState();
+  if(state.user.isSiginin){
+    const userDetails = state.userDetails.userdetails;
+    if(Object.keys(userDetails).length > 0){
       return(
         <>
-          <NullUser/>
+          <LoginUser user={userDetails}/>
           <FixedMenu />
         </>
       );
+    }else{
+      return(<Redirect to='/user/new' />);
     }
+   }else{
+    return(
+      <>
+        <NullUser />
+        <FixedMenu />
+      </>
+    );
   }
 }
 
 function LoginUser(props){
+  console.log(props)
   return(
     <div>
         <Header />
@@ -80,16 +55,17 @@ function LoginUser(props){
                 
                 </div>
                 <div className="datas flex-jus-around">
-                  <div><p>NaN</p><p className="label">貰った <FontAwesomeIcon icon={faHeart}/></p></div>
-                  <div><p>NaN</p><p className="label">送った <FontAwesomeIcon icon={faHeart}/></p></div>
-                  <div><p>NaN</p><p className="label">貰った <FontAwesomeIcon icon={faBookmark}/></p></div>
+                  <div><p>{props.user.counts.receivedLike}</p><p className="label">貰った <FontAwesomeIcon icon={faHeart}/></p></div>
+                  <div><p>{props.user.counts.sentLike}</p><p className="label">送った <FontAwesomeIcon icon={faHeart}/></p></div>
+                  <div><p>{props.user.counts.receivedBookmark}</p><p className="label">貰った <FontAwesomeIcon icon={faBookmark}/></p></div>
                 </div>
               </div>
               <div className="details">
                 <div className="name">
-                  {props.user.displayName}
+                  {props.user.name}/{props.user.job}
                 </div>
                 <div className="description">
+                  {props.user.description}
                 </div>
               </div>
             </div>

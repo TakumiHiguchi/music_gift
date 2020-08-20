@@ -20,7 +20,7 @@ class newUserSlider extends React.Component {
       updateCount: 0,
       openIndex:-1,
       submitPage:-1,
-      data:{name:this.props.user.user.displayName,id:""}
+      data:{name:this.props.user.displayName,id:""}
     };
   }
   handleOnChange(type,val){
@@ -33,13 +33,14 @@ class newUserSlider extends React.Component {
     this.setState({data:ins});
   }
   hendleOnSubmit(){
-    const result = this.api(this.state.data.name,this.state.data.id,this.props.user.user)
+    const result = this.api(this.state.data.name,this.state.data.id,this.props.user)
     if(result){
       this.setState({submitPage:true});
     }
   }
 
   async api(name,key,user){
+    console.log(user)
     try {
       const db = firebase.firestore();
       await db.collection("userDetails").doc(user.uid).set({
@@ -49,6 +50,7 @@ class newUserSlider extends React.Component {
         "job":key,
         counts:{receivedBookmark:0,receivedLike:0,sentLike:0}
       });
+      
       return true;
     } catch (err) {
       return false;
