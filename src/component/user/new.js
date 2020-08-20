@@ -7,6 +7,8 @@ import { faHome} from "@fortawesome/free-solid-svg-icons";//矢印アイコン
 
 import firebase from 'firebase/app'; //必須
 import 'firebase/firestore';
+import store from "../../redux/store.js"
+import { setUserDetails } from '../../redux/action.js'
 
 import viewportUnit from 'viewport-units-buggyfill';
 viewportUnit.init({force: true});
@@ -40,17 +42,18 @@ class newUserSlider extends React.Component {
   }
 
   async api(name,key,user){
-    console.log(user)
     try {
       const db = firebase.firestore();
       await db.collection("userDetails").doc(user.uid).set({
         "name": name,
-        "description": "てすとでーたです.",
+        "description": "",
         "email":user.email,
         "job":key,
         counts:{receivedBookmark:0,receivedLike:0,sentLike:0}
       });
-      
+      db.collection("userDetails").doc(user.uid).get().then((response) => {
+        store.dispatch(setUserDetails(response));
+       });
       return true;
     } catch (err) {
       return false;

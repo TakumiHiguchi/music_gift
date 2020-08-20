@@ -41,12 +41,35 @@
             padding:0 10px 0 15px;
             .name{
                 font-weight:bold;
-            }
-            .description{
                 font-size:0.9em;
+                line-height:1.4em;
+                cursor:pointer;
+                h1{
+                    display:inline-block;
+                    margin-right:5px;
+                }
+                svg{
+                    color:#aaa;
+                    animation: spin 10s linear infinite;
+                    margin-bottom:1px;
+                }
+            }
+            .job{
+                color:#aaa;
+                line-height:1.4em;
+                margin-bottom:5px;
+            }
+            .description,.job{
+                font-size:0.9em;
+                line-height:1.4em;
             }
         }
     }
+}
+
+@keyframes spin {
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(360deg);}
 }
 
 //new

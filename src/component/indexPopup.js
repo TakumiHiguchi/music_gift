@@ -11,8 +11,6 @@ const brPadding={
 class indexPopup extends Component{
   constructor(props){
       super(props)
-      this.state={
-      }
   }
   handleClickOutside() {
     this.props.action(false);

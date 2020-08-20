@@ -1,16 +1,19 @@
 const initialState = {
-    isSiginin:false
+    isSiginin:false,
+    user:{}
 };
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SIGNED_IN":
         return Object.assign({}, state, {
-            isSiginin: true
+            isSiginin: true,
+            user: action.value
         });
     case "SIGNED_OUT":
         return Object.assign({}, state, {
-            isSiginin: false
+            isSiginin: false,
+            user: {}
         });
     default:
         return state

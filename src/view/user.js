@@ -1,15 +1,15 @@
 import React,{Component} from 'react';
 import Header from '../component/Header';
 import FixedMenu from '../component/FixedMenu';
+import LoginUser from '../component/user/loginUser';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; //fontaweresomeのインポート
 import { faBookmark,faHeart } from '@fortawesome/free-regular-svg-icons';
 
-import { isSignIn } from '../redux/action.js'
 import store from "../redux/store.js"
 
+
 import { 
-  Link, 
   withRouter,
   Redirect
 } from "react-router-dom";
@@ -25,7 +25,10 @@ function User (props){
     if(Object.keys(userDetails).length > 0){
       return(
         <>
-          <LoginUser user={userDetails}/>
+          <div>
+            <Header />
+            <LoginUser user={userDetails}/>
+          </div>
           <FixedMenu />
         </>
       );
@@ -40,39 +43,6 @@ function User (props){
       </>
     );
   }
-}
-
-function LoginUser(props){
-  console.log(props)
-  return(
-    <div>
-        <Header />
-        <main>
-          <div className="userPage">
-            <div className="uP_userInf">
-              <div className="uP_userPrf flex">
-                <div className="icon">
-                
-                </div>
-                <div className="datas flex-jus-around">
-                  <div><p>{props.user.counts.receivedLike}</p><p className="label">貰った <FontAwesomeIcon icon={faHeart}/></p></div>
-                  <div><p>{props.user.counts.sentLike}</p><p className="label">送った <FontAwesomeIcon icon={faHeart}/></p></div>
-                  <div><p>{props.user.counts.receivedBookmark}</p><p className="label">貰った <FontAwesomeIcon icon={faBookmark}/></p></div>
-                </div>
-              </div>
-              <div className="details">
-                <div className="name">
-                  {props.user.name}/{props.user.job}
-                </div>
-                <div className="description">
-                  {props.user.description}
-                </div>
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
-  )
 }
 
 function NullUser(){
