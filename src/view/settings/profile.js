@@ -20,7 +20,7 @@ function Settings(props){
             <Header />
             <LoginUser user={userDetails}/>
           </div>
-          <Edit clickOutside={() => props.history.push("/")}/>
+          <Edit clickOutside={() => props.history.push("/user")} user={userDetails}/>
         </>
       );
     }else{

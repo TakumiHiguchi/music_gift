@@ -121,6 +121,7 @@
         font-size:0.8em;
         line-height:40px;
         text-decoration:none;
+        cursor:pointer;
     }
     .submitBtn{
         position:absolute;
@@ -130,6 +131,7 @@
         font-size:0.8em;
         line-height:40px;
         text-decoration:none;
+        cursor:pointer;
     }
 }
 .popup_effect{
@@ -146,6 +148,12 @@
     animation-name:bottomTotop01;
     animation-duration:0.4s;
     transform: scale(1);
+}
+.profile_setting_popup_effect_de{
+    animation-name:bottomTotopBack01;
+    animation-duration:0.4s;
+    transform: scale(1);
+    animation-fill-mode: forwards;
 }
 @keyframes topTobottom01 {
     0% {
@@ -178,5 +186,15 @@
     100%{
         opacity: 1;
         transform: translateY(0);
+    }
+}
+@keyframes bottomTotopBack01 {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(100vh);
     }
 }

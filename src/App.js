@@ -24,7 +24,7 @@ import Search from "./view/search";
 import User from "./view/user";
 import User_new from "./view/user/new";
 import Settings_profile from "./view/settings/profile";
-import Bookmark from "./view/bookmark";
+import Compose from "./view/compose";
 import Pl_show from "./view/playlist/show";
 import SignUp from "./auth/SignUp";
 
@@ -46,9 +46,9 @@ class App extends React.Component {
     const db = firebase.firestore();
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        store.dispatch(isSignIn(user));
         db.collection("userDetails").doc(user.uid).get().then((response) => {
-         store.dispatch(setUserDetails(response));
+          store.dispatch(setUserDetails(response));
+          store.dispatch(isSignIn(user));
         });
       }else {
         store.dispatch(isSignIn(false))
@@ -83,7 +83,7 @@ function MusicGift(){
           <Route exact path="/article" component={Article} />
           <Route exact path="/search" component={Search} />
           <Route exact path="/user" component={User} />
-          <Route exact path="/bookmark" component={Bookmark} />
+          <Route exact path="/compose" component={Compose} />
           <Route render={() => <h1>ページが見つかりません</h1>} />
         </Switch>
       </CSSTransition>
