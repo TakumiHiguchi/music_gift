@@ -4,6 +4,14 @@
     left:0;
     width: 100%;
     z-index:999;
+    .popup_wrap{
+        height:100vh;
+        position: absolute;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        cursor: pointer;
+        z-index:-1;
+    }
     .whir{
         position:absolute;
         z-index:11;

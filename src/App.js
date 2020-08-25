@@ -25,6 +25,7 @@ import User from "./view/user";
 import User_new from "./view/user/new";
 import Settings_profile from "./view/settings/profile";
 import Compose from "./view/compose";
+import Playlist_new from "./view/playlist/new";
 import Pl_show from "./view/playlist/show";
 import SignUp from "./auth/SignUp";
 
@@ -64,6 +65,7 @@ class App extends React.Component {
           <Route exact path="/playlist/:id" component={Pl_show} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/settings/profile" component={Settings_profile} />
+          <Route exact path="/compose/playlist" component={Playlist_new} />
           <Route path="*">
             <MusicGift />
           </Route>

@@ -20,7 +20,7 @@ function Bookmark() {
           <div>
             <Header />
             <div className="composeContainer">
-              <h1>何を投稿しますか？</h1>
+              <h1>投稿を作成</h1>
               <div className="list">
                 <h2>プレイリストを投稿</h2>
                 <div className="imageContainer">
@@ -32,26 +32,8 @@ function Bookmark() {
                     <a>詳細</a>
                   </div>
                   <div className="submit">
-                    <a>
-                      プレイリストを作成
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div to={"/"} className="list">
-                <h2>プレイリストを投稿</h2>
-                <div className="imageContainer">
-                  <img src="https://colorido.co.jp/wp-content/uploads/2020/03/cb65bded867ed46c1bb6c48627d86f31.jpg"/>
-                </div>
-                <div className="content">
-                  <div className="description flex">
-                    <p>複数の曲を紹介したいときに最適です。</p>
-                    <a>詳細</a>
-                  </div>
-                  <div className="submit">
-                    <a>
-                      プレイリストを作成
-                    </a>
+                    <Link to={"/compose/playlist"}>プレイリストを作成</Link>
+                      
                   </div>
                 </div>
               </div>
