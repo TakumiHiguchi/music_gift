@@ -37,7 +37,7 @@ class Profile extends React.Component{
         }
         this.setState({isPopup:isPopup});
     }
-
+    
     render(){
         return(
             <div className="playlistCreateForm">
