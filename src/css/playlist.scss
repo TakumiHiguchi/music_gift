@@ -449,7 +449,7 @@
     .createPlaylistMusic{
         width:100%;
         height:55px;
-        line-height:60px;
+        line-height:55px;
         background:#f0f0f0;
         border-radius:10px;
         cursor:pointer;
@@ -502,26 +502,65 @@
     }
     .addMusic{
         position:relative;
-        background:white;
-        width:calc(80vw - 20px);
-        height:80vh;
-        margin:10vh 10vw;
-        padding:20px 10px;
-        border-radius:10px;
+        background:rgba(255, 255, 255, 0.95);
+        width:100vw;
+        height:100vh;
+        .addmusic_morePopup{
+            position:fixed;
+            top:0;
+            left:100vw;
+            width:100vw;
+            height:100vh;
+            background:white;
+            .thumbnailSettingContainer{
+                border-bottom:1px solid #f0f0f0;
+                padding-bottom:5px;
+                .music-thumbnail{
+                    padding:10px;
+                    width:calc(100vw - 20px);
+                    height:calc(calc(100vw - 20px)* 0.5625);
+                    img{
+                        display:block;
+                        width:calc(100vw - 20px);
+                        height:calc(calc(100vw - 20px)* 0.5625);
+                        object-fit: cover;
+                    }
+                }
+                p{
+                    padding:0 10px;
+                }
+            }
+
+            .contentSettingContainer{
+                padding:10px 10px;
+                
+            }
+        }
         .closeBtn{
             position:absolute;
-            top:0px;
-            right:5px;
-            padding:10px;
+            top:10px;
+            left:20px;
+            line-height:24px;
             border-radius:50%;
             cursor:pointer;
-            color:#aaa;
+            color: #4285f4;
+            font-size:0.8em;
+        }
+        .submitBtn{
+            position:absolute;
+            top:10px;
+            right:20px;
+            line-height:24px;
+            border-radius:50%;
+            cursor:pointer;
+            color: #4285f4;
+            font-size:0.8em;
         }
         .search{
             border-radius:5px;
             border:1px solid #f0f0f0;
             padding:3px 0;
-            margin-bottom:10px;
+            background:white;
             .icon{
                 width:35px;
                 text-align:center;
@@ -534,41 +573,51 @@
         .title{
             text-align:center;
             font-size:1em;
-            margin-bottom:10px;
+            
         }
         .selectMusicContainer{
-            max-height:calc(100% - 66px);
+            max-height:calc(100% - 90px);
             cursor:pointer;
-            .musicList{
-                padding:5px 0;
-                .image{
-                    width:20vw;
-                    height:20vw;
-                    background:#f0f0f0;
+            
+        }
+        .addmusicBody{
+            max-height:calc(100% - 44px);
+            .settingList{
+                padding:10px;
+                font-size:0.9em;
+                border-bottom:1px solid #f0f0f0;
+                cursor:pointer;
+            }
+        }
+        .musicList{
+            padding:5px 10px;
+            .image{
+                width:20vw;
+                height:20vw;
+                background:#f0f0f0;
+                border-radius:5px;
+                margin-right:10px;
+                img{
+                    display:block;
+                    width:100%;
+                    height:100%;
+                    object-fit: cover;
                     border-radius:5px;
-                    margin-right:10px;
-                    img{
-                        display:block;
-                        width:100%;
-                        height:100%;
-                        object-fit: cover;
-                        border-radius:5px;
-                    }
-                    p{
-                        line-height:20vw;
-                        text-align:center;
-                        color:#aaa;
-                    }
                 }
-                .content{
-                    width:calc(100% - calc(20vw + 10px));
-                    .musictitle{
-                        font-weight:bold;
-                    }
-                    .artist{
-                        font-size:0.9em;
-                        line-height:1.3em;
-                    }
+                p{
+                    line-height:20vw;
+                    text-align:center;
+                    color:#aaa;
+                }
+            }
+            .content{
+                width:calc(100% - calc(20vw + 10px));
+                .musictitle{
+                    font-weight:bold;
+                }
+                .artist{
+                    font-size:0.9em;
+                    line-height:1.3em;
                 }
             }
         }
