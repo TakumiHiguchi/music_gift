@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; //fontaweresom
 import { faSearch } from "@fortawesome/free-solid-svg-icons";//矢印アイコン
 
 import Form from './addmusicForm';
+import Show from './music_show';
 import viewportUnit from 'viewport-units-buggyfill';
 viewportUnit.init({force: true});
 
@@ -18,7 +19,8 @@ class Profile extends React.Component{
             isPopup:{noLogin:true},
             searchQuery:"",
             musicData:[],
-            selectData:{title:"",artist:"",key:"",imageUrl:""}
+            selectData:{title:"",artist:"",key:"",imageUrl:""},
+            postdata:{}
         }
     }
     componentDidMount(){
@@ -83,7 +85,7 @@ class Profile extends React.Component{
                         <Slider ref={slider => (this.slider = slider)} {...settings}>
                             <div className="addMusic">
                                 <div style={{background:"white",padding:"10px 10px 10px 10px",boxShadow: "0px 4px 4px -4px rgba(0,0,0,0.5)"}}>
-                                    <p className="title" style={{marginBottom:"10px"}}>プレイリストに曲を追加</p>
+                                    <p className="edit_title" style={{marginBottom:"10px"}}>プレイリストに曲を追加</p>
                                     <div className="search flex">
                                         <div className="icon"><FontAwesomeIcon icon={faSearch} style={{color:"#aaa"}}/></div>
                                         <input type="text" className="removeCss" placeholder="曲名やアーティスト名で検索" value={this.state.searchQuery} onChange={(e) => this.handleOnChange(e.target.value)}/>
@@ -123,9 +125,19 @@ class Profile extends React.Component{
                             <Form 
                                 select={this.state.selectData}
                                 action={{
-                                    goto:(value) => this.slider.slickGoTo(value)
+                                    goto:(value) => this.slider.slickGoTo(value),
+                                    submit:(value) => this.setState({postdata:value})
                                 }}
                             />
+                            <div className="addMusic">
+                                <div style={{background:"white",padding:"10px 10px 10px 10px",boxShadow: "0px 4px 4px -4px rgba(0,0,0,0.5)"}}>
+                                    <h2 className="edit_title">プレビュー</h2>
+                                </div>
+                                <Show data={this.state.postdata}/>
+                                <div className="closeBtn" onClick={() => this.slider.slickGoTo(1)}>戻る</div>
+                                <div className="submitBtn" onClick={() => this.props.action.close()}>適用</div>
+                            </div>
+                            
                         </Slider>
                     </div>
                 }

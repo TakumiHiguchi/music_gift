@@ -162,7 +162,7 @@
         .label{
             color:#aaa;
         }
-    }
+    } 
     .desOpen{
         animation-name:topTobottom1;
         animation-duration:0.1s;
@@ -175,9 +175,11 @@
         max-height:150px;
     }
 }
+
 .playlistSection{
     width:100vw;
     height:calc(100vh - 7px);
+    background:white;
     .contentWrap{
         height:calc(100% - calc(100vw * 0.5625));
         .title{
@@ -387,6 +389,22 @@
         max-height:150px;
     }
 }
+@keyframes topTobottom2 {
+    0% {
+        max-height:0px;
+    }
+    100%{
+        max-height:auto;
+    }
+}
+@keyframes bottomTotop2 {
+    0% {
+        max-height:auto;
+    }
+    100%{
+        max-height:0;
+    }
+}
 
 //インスタ
 .insta_btn3 {/*ボタンの下地*/
@@ -502,7 +520,7 @@
     }
     .addMusic{
         position:relative;
-        background:rgba(255, 255, 255, 0.95);
+        background:white;
         width:100vw;
         height:100vh;
         .addmusic_morePopup{
@@ -515,6 +533,7 @@
             .thumbnailSettingContainer{
                 border-bottom:1px solid #f0f0f0;
                 padding-bottom:5px;
+                height:calc(100vh - 44px);
                 .music-thumbnail{
                     padding:10px;
                     width:calc(100vw - 20px);
@@ -526,8 +545,20 @@
                         object-fit: cover;
                     }
                 }
+                .infOpen{
+                    animation-name:topTobottom2;
+                    animation-duration:0.1s;
+                    animation-fill-mode: forwards;
+                }
+                .infClose{
+                    animation-name:bottomTotop2;
+                    animation-duration:0.1s;
+                    animation-fill-mode: forwards;
+                    max-height:150px;
+                }
                 p{
                     padding:0 10px;
+                    line-height:1.5em;
                 }
             }
 
@@ -556,6 +587,42 @@
             color: #4285f4;
             font-size:0.8em;
         }
+        .youtubeInf{
+            width:calc(100vw - 20px);
+            padding:0 10px;
+            h3{
+                margin:10px 0;
+            }
+            .addUrlsection{
+                width:100%;
+                padding-bottom:20px;
+                margin-bottom:20px;
+                border-bottom:1px dashed #aaa;
+                .imgContainer{
+                    width:35vw;
+                    height:calc(35vw * 2.159420);
+                    background:#f8f8f8;
+                    border-radius:10px;
+                    img{
+                        width:100%;
+                        border-radius:10px;
+                    }
+                }
+                .contentContainer{
+                    width:calc(65vw - 30px);
+                    padding-left:10px;
+                    p{
+                        span{
+                            display:inline-block;
+                            margin-right:5px;
+                            font-size:1.4em;
+                            color:#00aced;
+                        }
+                    }
+                }
+            }
+        }
+        
         .search{
             border-radius:5px;
             border:1px solid #f0f0f0;
@@ -570,10 +637,9 @@
                 font-size:16px;
             }
         }
-        .title{
+        .edit_title{
             text-align:center;
             font-size:1em;
-            
         }
         .selectMusicContainer{
             max-height:calc(100% - 90px);

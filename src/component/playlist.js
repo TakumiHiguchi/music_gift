@@ -36,14 +36,6 @@ const instagramStyle={
 const key = "dwnedfoiwefiqwe"
 let nTimer;//タイマー
 
-//firebaseインスタンスの初期化
-firebase.initializeApp({
-  apiKey: 'AIzaSyBC_v_l0991FvOF33DyuDG0HQemskJgcpk',
-  authDomain: 'musicgift-54fd9.firebaseapp.com',
-  projectId: 'musicgift-54fd9'
-});
-const db = firebase.firestore();
-
 
 export default class SlickGoTo extends React.Component {
   state = {
@@ -54,6 +46,7 @@ export default class SlickGoTo extends React.Component {
   };
 
   api(){
+    /*
     db.collection("playlists").doc().set({
       "title": "テストデータ",
       "description": "てすとでーたです.",
@@ -63,6 +56,7 @@ export default class SlickGoTo extends React.Component {
         this.setState({data:doc.data()})
       })
     })
+    */
   }
 
   timer(){

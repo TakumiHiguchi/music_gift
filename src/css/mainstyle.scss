@@ -140,3 +140,25 @@ input.formInput{
 	-webkit-text-overflow: ellipsis;
 	-o-text-overflow: ellipsis;
 }
+.youtubeContainer {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+}
+.youtubeContainer iframe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+.submitButton1{
+    display:block;
+    background:#00aced;
+    color:white;
+    text-align:center;
+    padding:5px 0;
+    cursor:pointer;
+    border-radius:5px;
+    text-decoration:none;
+}

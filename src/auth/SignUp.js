@@ -9,7 +9,10 @@ var firebaseui = require('firebaseui-ja');
 
 
 function SignUp(){
-  let ui = new firebaseui.auth.AuthUI(firebase.auth());
+  let ui = firebaseui.auth.AuthUI.getInstance();
+  if (!ui) {
+    ui = new firebaseui.auth.AuthUI(firebase.auth());
+  }
   const uiConfig = {
     callbacks: {
       signInSuccessWithAuthResult: function(authResult, redirectUrl) {

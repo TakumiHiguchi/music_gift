@@ -44,6 +44,22 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
+    
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBC_v_l0991FvOF33DyuDG0HQemskJgcpk",
+      authDomain: "musicgift-54fd9.firebaseapp.com",
+      databaseURL: "https://musicgift-54fd9.firebaseio.com",
+      projectId: "musicgift-54fd9",
+      storageBucket: "musicgift-54fd9.appspot.com",
+      messagingSenderId: "1085480009895",
+      appId: "1:1085480009895:web:446a979186d04ff4a3db82",
+      measurementId: "G-4TSG6KBCFN"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    
     const db = firebase.firestore();
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
